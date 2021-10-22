@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "search.h": "c",
+        "*.tcc": "c",
+        "string": "c",
+        "node.h": "c"
+    }
+}
