@@ -10,7 +10,3 @@ add_executable(search
 	src/search.c
 	)
 
-target_compile_options(search PRIVATE
-  $<$<CXX_COMPILER_ID:MSVC>:/W4 /WX>
-  $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -Wpedantic -Werror>
-)

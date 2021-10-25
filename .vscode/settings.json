@@ -3,6 +3,7 @@
         "search.h": "c",
         "*.tcc": "c",
         "string": "c",
-        "node.h": "c"
+        "node.h": "c",
+        "astar.h": "c"
     }
 }

@@ -1,9 +1,7 @@
 #include <stddef.h>
 #include <stdio.h>
-#include <stdarg.h>
 #include <stdlib.h>
 #include <string.h>
-#include <errno.h>
 
 #include "search.h"
 #include "board.h"
@@ -50,15 +48,13 @@ void expandNodeInDirection(node * src, node * nodeList, enum MOVE dir) {
     default:
         break;
     }
-    
-    node * newNode = (node*) malloc(sizeof(node));
-    
+    node * newNode = (node*) malloc(sizeof(node)); 
     memcpy(newNode->boardState, movedBoard, 9 * sizeof(short));
     newNode->solutionPath = src;
     append(nodeList, newNode);
 }
 
-node * expandNode(node * currentNode, node * nodeList) {
+void expandNode(node * currentNode, node * nodeList) {
     short zeroPos = findZeroPostion(currentNode->boardState);
     switch (zeroPos)
     {
@@ -107,7 +103,6 @@ node * expandNode(node * currentNode, node * nodeList) {
     default:
         break;
     }
-    return NULL;
 }
 
 void breadthSearch(node * nodeList) {
@@ -127,7 +122,6 @@ void breadthSearch(node * nodeList) {
         printf("No solution! \n");
     }
 }
-
 
 void deepSearch(node * nodeList) {
     if (checkSolution(nodeList->boardState) == 1) {
@@ -153,7 +147,6 @@ void deepSearchB(node * nodeList, int depth, int limit) {
     }        
     node * newNode = (node *) malloc(sizeof(node));
     expandNode(nodeList, newNode);
-
     while (newNode->children != NULL && depth < limit) {
         deepSearchB(newNode->children, depth + 1, limit);
         if (deepEnd == 1) {
